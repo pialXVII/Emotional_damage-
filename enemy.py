@@ -1,0 +1,2 @@
+def enemy:
+   pass
