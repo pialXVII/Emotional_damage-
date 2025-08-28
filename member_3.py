@@ -39,12 +39,19 @@ def enemy_attempt_slap(player, enemies):
 # Feature 3: Enemy Spawning & Neutral Movement
 
 
-def spawn_enemy(arena_bounds):
-    """
-    Spawn a new enemy at a random location inside the arena.
-    Returns the enemy object.
-    """
-    pass
+def enemy_spawn_one():
+    e = {
+        'p': [random.uniform(-FLOOR_HALF*0.85, FLOOR_HALF*0.85),
+              random.uniform(-FLOOR_HALF*0.85, FLOOR_HALF*0.85),
+              ENEMY_BASE_Z],
+        'm': 'N',    # Neutral
+        't': 0.0,    # mood timer
+        'v': [random.uniform(-1,1)*0.5, random.uniform(-1,1)*0.5],
+    }
+    return e
+
+def enemy_reset_all():
+    enemies[:] = [enemy_spawn_one() for _ in range(ENEMY_COUNT)]
 
 
 def enemy_neutral_movement(enemy):
